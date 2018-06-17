@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    <div class="mb-4" style="text-align: center;">
+        <h1 class="my-4">Inicio de sesión</h1>
+
+        {% include 'includes/messages.html' %}
+
+        <form method="POST" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+<h1 class="my-4">Listado de publicaciones</h1>
+
+{% if messages %}
+    {% for message in messages %}
+        {% if 'info' in message.tags %}
+            <h3 class="my-4"><span class="badge badge-secondary">{{ message }}</span></h3>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if publications %}
+    {% for publication in publications %}
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+            <img class="card-img-top" src="{{ publication.image.url }}" alt="{{ publication.title }}" height="350" width="750">
+            <div class="card-body">
+                <h2 class="card-title">{{ publication.title }}</h2>
+                <p>
+                    Categorías:
+                    {% for category in publication.categories.all %}
+                        <a href="{% url 'publications-category' category.pk %}"><button type="button" class="btn btn-secondary">{{ category.name }}</button></a>
+                    {% endfor %}
+                </p>
+                <p class="card-text">{{ publication.introductory_text }}</p>
+                <a href="{% url 'publication-detail-view' publication.publisher.username publication.pk %}" class="btn btn-primary">Leer más &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+                Publicado el {{ publication.created_on }} por
+                <a href="{% url 'publications-user' publication.publisher.username %}">{{ publication.publisher }}</a>
+            </div>
+        </div>
+
+    {% endfor %}
+
+    {% include 'pagination.html' %}
+
+{% else %}
+    <p>No hay ninguna publicación</p>
+{% endif %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    <div class="mb-4" style="text-align: center;">
+        <h1 class="my-4">Publicación</h1>
+
+        {% include 'includes/messages.html' %}
+
+        <form method="POST" novalidate enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Publicar</button>
+        </form>
+    </div>
+
+{% endblock %}

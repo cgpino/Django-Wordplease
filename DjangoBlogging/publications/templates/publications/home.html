@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-8">
+            {% include 'publications/list_publications.html' %}
+        </div>
+
+        <div class="col-md-4">
+            {% include 'widgets.html' %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+<!-- Search Widget -->
+<div class="card my-4">
+    <h5 class="card-header">Búsqueda</h5>
+    <div class="card-body">
+        <form action="/api/v1/publications/" method="get" role="search">
+            <div class="input-group">
+                <input type="text" class="form-control" name="search">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="submit">Buscar</button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Categories Widget -->
+<div class="card my-4">
+    <h5 class="card-header">Categorías</h5>
+    <div class="card-body">
+        <div style="text-align: center;">
+            <ul class="list-unstyled mb-0">
+                {% if listCategories %}
+                    {% for category in listCategories %}
+                        <li>
+                            <a href="{% url 'publications-category' category.pk %}">{{ category }}</a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li>No hay ninguna categoría</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Side Widget -->
+<div class="card my-4">
+    <h5 class="card-header">Sobre la web</h5>
+    <div class="card-body">
+        Esta es una web de prueba construída en Django como parte de una de las prácticas del Bootcamp de desarrollo web de KeepCoding.
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<!-- Title -->
+<h1 class="mt-4">{{ publication.title }}</h1>
+
+<!-- Author -->
+<p class="lead"> por <a href="{% url 'publications-user' publication.publisher.username %}">{{ publication.publisher }}</a>
+</p>
+
+<hr>
+
+<!-- Date/Time -->
+<p>Publicado el {{ publication.created_on }}</p>
+
+<hr>
+
+<!-- Preview Image -->
+<img class="card-img-top" src="{{ publication.image.url }}" alt="{{ publication.title }}" height="350" width="900">
+
+<hr>
+
+<!-- Post Content -->
+<p class="lead">{{ publication.introductory_text }}</p>
+
+<p>{{ publication.body }}</p>
+
+<p class=mb-4">
+    Categorías:
+
+    {% for category in publication.categories.all %}
+        <a href="{% url 'publications-category' category.pk %}"><button type="button" class="btn btn-secondary">{{ category.name }}</button></a>
+    {% endfor %}
+
+</p>

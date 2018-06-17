@@ -1,0 +1,26 @@
+<!-- Pagination -->
+<span class="current">
+    <b>&nbsp;<span class="glyphicon glyphicon-file"></span> Página {{ publications.number }} de {{ publications.paginator.num_pages }}</b>
+</span>
+
+<ul class="pagination justify-content-center mb-4">
+    {% if publications.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ publications.previous_page_number }}">&larr; Anterior</a>
+        </li>
+    {% else %}
+        <li class="page-item disabled">
+            <p class="page-link">&larr; Anterior</p>
+        </li>
+    {% endif %}
+
+    {% if publications.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ publications.next_page_number }}">Siguiente &rarr;</a>
+        </li>
+    {% else %}
+        <li class="page-item disabled">
+            <p class="page-link">Siguiente &rarr;</p>
+        </li>
+    {% endif %}
+</ul>

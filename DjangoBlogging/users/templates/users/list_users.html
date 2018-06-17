@@ -1,0 +1,29 @@
+<h1 class="my-4">Listado de usuarios</h1>
+
+{% if users %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>E-mail</th>
+                <th>Último inicio de sesión</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td><a href="{% url 'publications-user' user.username %}">{{ user.username }}</a></td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.last_login }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No hay ningún usuario</p>
+{% endif %}
